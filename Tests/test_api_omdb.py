@@ -11,4 +11,4 @@ def test_search_movie_to_id():
     query = {'i': 'tt1285016'}
     response = CinemaApi().get_movie(query=query)
     assert response.status_code(200)
-    assert len(response.field('Title')) > 88
+    assert len(response.field('Title')) > 0
