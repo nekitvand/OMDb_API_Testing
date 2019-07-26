@@ -18,3 +18,5 @@ class CinemaApi(ApiCore):
 
     def get_movie(self,query):
         return AssertableResponse(self.get(query))
+
+

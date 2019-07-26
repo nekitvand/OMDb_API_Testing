@@ -1,11 +1,14 @@
 import logging
 
+
+
 class AssertableResponse(object):
 
     def __init__(self, response):
         self._response = response
         logging.info(f"Request url: {response.request.url}, body: {response.request.body}")
         logging.info(f"Request status: {response.status_code}, body: {response.text}")
+
 
     def status_code(self, code):
         logging.info(f"Assert: Status code should be {code}")
@@ -14,3 +17,7 @@ class AssertableResponse(object):
     def field(self,name):
         logging.info(f"Assert: Name field should be {name}")
         return self._response.json()[name]
+
+    def should_have(self,condition):
+        condition.match(self._response)
+        return self
